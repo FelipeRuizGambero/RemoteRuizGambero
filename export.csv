@@ -1,0 +1,30 @@
+import csv
+from datetime import datetime
+
+def exportar_tareas_csv(nombre_archivo, empleado, tareas):
+    """
+    Exporta una lista de tareas de un empleado a un archivo CSV.
+
+    :param nombre_archivo: Nombre del archivo CSV de salida.
+    :param empleado: Nombre del empleado.
+    :param tareas: Lista de diccionarios con las tareas (fecha, descripción, estado).
+    """
+    encabezados = ["Empleado", "Fecha", "Descripción", "Estado"]
+    
+    with open(nombre_archivo, mode='w', newline='', encoding='utf-8') as archivo:
+        escritor = csv.writer(archivo)
+        escritor.writerow(encabezados)
+        
+        for tarea in tareas:
+            escritor.writerow([empleado, tarea['fecha'], tarea['descripcion'], tarea['estado']])
+    
+    print(f"Archivo '{nombre_archivo}' generado exitosamente.")
+
+# Ejemplo de uso
+tareas = [
+    {"fecha": "2024-02-01", "descripcion": "Revisión de informes", "estado": "Completado"},
+    {"fecha": "2024-02-05", "descripcion": "Reunión con el equipo", "estado": "Pendiente"},
+    {"fecha": "2024-02-10", "descripcion": "Presentación de resultados", "estado": "En progreso"}
+]
+
+exportar_tareas_csv("tareas_empleado.csv", "Juan Pérez", tareas)
