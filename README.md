@@ -1,2 +1,2 @@
-Proyecto git de ruizgambero de hotfix
-Conectado con rama develop
+Proyecto git de ruizgambero
+En este commit se acaba esta rama
